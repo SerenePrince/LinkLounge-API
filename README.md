@@ -2,8 +2,11 @@
 
 The backend API for the **LinkLounge** project, built using **Node.js**, **Express**, and **MongoDB**. This API is part of the MERN stack implementation used in the full production of LinkLounge.
 
+## About the Project
+This project is a personal endeavor developed solely by me to showcase my skills in building robust and scalable backend systems. The **LinkLounge API** powers the LinkLounge platform, enabling users to create personalized lounges to share links, images, and social media profiles in a centralized, customizable space.
+
 ## Features
-- **User Management**:
+- **User Management**: 
   - Securely store user information, including usernames, passwords, and emails.
   - Authentication using industry-standard practices.
 - **Lounge Management**:
@@ -40,12 +43,18 @@ Ensure you have the following installed on your machine:
 
 3. Create a `.env` file in the project root and add the following environment variables:
    ```env
-   PORT=5000
-   MONGO_URI=your-mongodb-connection-string
-   CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
-   CLOUDINARY_API_KEY=your-cloudinary-api-key
-   CLOUDINARY_API_SECRET=your-cloudinary-api-secret
-   JWT_SECRET=your-jwt-secret
+   NODE_ENV=development
+   DATABASE_URI=your-mongodb-connection-string
+   ACCESS_TOKEN_SECRET=your-access-token-secret
+   REFRESH_TOKEN_SECRET=your-refresh-token-secret
+   PASSWORD_RESET_TOKEN_SECRET=your-password-reset-token-secret
+   EMAIL_USERNAME=your-email-username
+   EMAIL_PASSWORD=your-email-password
+   FRONTEND_URL=your-frontend-url
+   CLOUD_NAME=your-cloudinary-cloud-name
+   API_KEY=your-cloudinary-api-key
+   API_SECRET=your-cloudinary-api-secret
+   CLOUDINARY_URL=your-cloudinary-url
    ```
 
 4. Start the server:
@@ -57,21 +66,33 @@ Ensure you have the following installed on your machine:
 ## API Endpoints
 
 ### Authentication
-- **POST** `/api/auth/register`: Register a new user.
-- **POST** `/api/auth/login`: Log in an existing user.
+- **POST** `/api/auth`: Log in with username and password.
+- **GET** `/api/auth/refresh`: Refresh access token using a refresh token.
+- **POST** `/api/auth/logout`: Log out and clear refresh token cookie.
+- **POST** `/api/auth/forgot-password`: Handle password reset request.
+- **POST** `/api/auth/reset-password`: Reset the password.
+- **POST** `/api/auth/forgot-username`: Handle forgotten username requests.
+- **POST** `/api/auth/feedback`: Submit feedback.
 
 ### User Management
-- **GET** `/api/users/me`: Retrieve logged-in user's information (requires authentication).
+- **POST** `/api/users`: Create a new user.
+- **GET** `/api/users`: Retrieve all users (requires authentication).
+- **PATCH** `/api/users`: Update user details (requires authentication).
+- **DELETE** `/api/users`: Delete a user (requires authentication).
 
 ### Lounge Management
-- **POST** `/api/lounges`: Create a new lounge.
-- **GET** `/api/lounges`: Retrieve all lounges.
-- **GET** `/api/lounges/:id`: Retrieve a specific lounge by ID.
-- **PUT** `/api/lounges/:id`: Update a lounge by ID.
-- **DELETE** `/api/lounges/:id`: Delete a lounge by ID.
+- **GET** `/api/lounges/:username/:title`: Fetch a public lounge.
+- **GET** `/api/lounges/:user`: Retrieve lounges by user.
+- **POST** `/api/lounges`: Create a new lounge (authenticated).
+- **PATCH** `/api/lounges`: Update an existing lounge (authenticated).
+- **DELETE** `/api/lounges`: Delete a lounge (authenticated).
+- **PATCH** `/api/lounges/public`: Make a lounge public (authenticated).
+
+### Static Files
+- **GET** `/` or `/index`: Serve the landing page (`index.html`).
 
 ### Image Upload
-- **POST** `/api/uploads`: Upload an image and get the Cloudinary URL.
+- **POST** `/api/uploads`: Upload an image to Cloudinary and retrieve its URL.
 
 ## Deployment
 
@@ -84,10 +105,8 @@ Ensure you have the following installed on your machine:
 2. Set environment variables in the production environment.
 3. Push your code to the production server.
 
-## Contributing
-Feel free to fork the repository and submit pull requests. Contributions are welcome to improve and expand the API functionality.
+## Showcase and Contact
+This project is not open for contributions or further development by others but serves as a showcase of my capabilities in backend development. If you have any questions or feedback, feel free to reach out to me via [GitHub Issues](https://github.com/yourusername/LinkLounge-API/issues) or through my [portfolio](https://yourportfolio.com).
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
+This project is proprietary and developed solely by me. No part of this project may be reused, modified, or distributed without explicit permission.
