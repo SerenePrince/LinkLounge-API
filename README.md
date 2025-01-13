@@ -12,7 +12,7 @@ This project is a personal endeavor developed solely by me, showcasing my skills
 
 ---
 
-## **Features**
+## ✨ **Features**
 
 - **User Management**:  
   - Securely store user data (username, password, email).  
@@ -28,7 +28,7 @@ This project is a personal endeavor developed solely by me, showcasing my skills
 
 ---
 
-## **Technologies Used**
+## 🛠️ **Technologies Used**
 
 - **Node.js**: JavaScript runtime for executing server-side code.  
 - **Express**: Web framework for building RESTful APIs.  
