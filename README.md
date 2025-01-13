@@ -4,8 +4,6 @@
 
 The backend API for the **LinkLounge** project, built with **Node.js**, **Express**, and **MongoDB**. This API powers the LinkLounge platform, enabling users to create personalized lounges to share links, images, and social media profiles in a centralized, customizable space.
 
-[LinkLounge API Documentation](https://github.com/yourusername/LinkLounge-API)
-
 ---
 
 ## **About the Project**
